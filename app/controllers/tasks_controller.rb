@@ -1,9 +1,39 @@
 class TasksController < ApplicationController
+  before_action :find_task, except: [:create, :new, :index]
+
   def index
     @tasks = Task.all
   end
 
-  def show
+  def show; end
+
+  def new; end
+
+  def create
+    Task.create(task_params)
+    redirect_to tasks_path
+  end
+
+  def edit; end
+
+  def update
+    @task.completed = false if params[:task][:completed].nil?
+    @task.update(task_params)
+    redirect_to task_path
+  end
+
+  def destroy
+    @task.destroy
+    redirect_to tasks_path
+  end
+
+  private
+
+  def find_task
     @task = Task.find(params[:id])
+  end
+
+  def task_params
+    params.require(:task).permit(:title, :details, :completed)
   end
 end

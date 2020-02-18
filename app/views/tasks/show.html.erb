@@ -2,11 +2,13 @@
 <p><%= @task.details %></p>
 <form action="#">
   <% if @task.completed == false %>
-    <input type="checkbox" name=task[completed]>
+    <input type="checkbox" name=task[completed] disabled="true">
     <label for="task[completed]">This task is not completed!</label>
   <% else %>
-    <input type="checkbox" name="task[completed]" checked="checked">
+    <input type="checkbox" name="task[completed]" checked="checked" disabled="true">
     <label for="task[completed]">This task is already completed!</label>
   <% end %>
 </form>
 <%= link_to 'back', tasks_path %>
+<%= link_to 'Edit this task', edit_task_path(@task) %>
+<%= link_to 'Delete this task', task_path(@task), method: :delete %>

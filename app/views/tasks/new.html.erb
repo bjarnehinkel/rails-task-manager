@@ -1,0 +1,10 @@
+<h1>Add Your Task</h1>
+<form action="/tasks" method="post">
+  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+  <label for="title">Title of your Task:</label>
+  <input type="text" name="task[title]">
+  <label for="details">Details:</label>
+  <textarea name="task[details]" cols="30" rows="10"></textarea>
+  <input type="submit">
+</form>
+<%= link_to "Back", tasks_path %>
