@@ -1,0 +1,12 @@
+<h1><%= @task.title %></h1>
+<p><%= @task.details %></p>
+<form action="#">
+  <% if @task.completed == false %>
+    <input type="checkbox" name=task[completed]>
+    <label for="task[completed]">This task is not completed!</label>
+  <% else %>
+    <input type="checkbox" name="task[completed]" checked="checked">
+    <label for="task[completed]">This task is already completed!</label>
+  <% end %>
+</form>
+<%= link_to 'back', tasks_path %>
